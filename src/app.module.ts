@@ -5,8 +5,11 @@ import { JobModule } from './job/job.module';
 import { LocationModule } from './location/location.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
+import { ScraperModule } from './scraper/scraper.module';
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
@@ -20,6 +23,7 @@ import { ConfigModule } from '@nestjs/config';
         password: process.env.DATABASE_PASSWORD,
       },
     }),
+    ScraperModule,
   ],
   controllers: [AppController],
   providers: [AppService],

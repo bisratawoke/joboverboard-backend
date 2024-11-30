@@ -6,6 +6,7 @@ import { Mongoose } from 'mongoose';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Job, JobSchema } from './schemas/job.schema';
 import { Location, LocationSchema } from '../location/schemas/location.schema';
+import { Field, FieldSchema } from 'src/field/schemas/field.schema';
 
 @Module({
   controllers: [JobController],
@@ -15,6 +16,7 @@ import { Location, LocationSchema } from '../location/schemas/location.schema';
     MongooseModule.forFeature([
       { name: Location.name, schema: LocationSchema },
       { name: Job.name, schema: JobSchema },
+      { name: Field.name, schema: FieldSchema },
     ]),
   ],
 })

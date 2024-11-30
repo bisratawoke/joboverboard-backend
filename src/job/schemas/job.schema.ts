@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { Document } from 'mongoose';
+import { Field } from 'src/field/schemas/field.schema';
 import { Location } from 'src/location/schemas/location.schema';
 
 export enum SENIORITY {
@@ -31,6 +32,9 @@ export class Job extends Document {
 
   @Prop({ type: Number, required: true })
   pay: number;
+
+  @Prop({ type: mongoose.Types.ObjectId, ref: Field.name })
+  field: mongoose.Types.ObjectId;
 }
 
 export const JobSchema = SchemaFactory.createForClass(Job);

@@ -16,6 +16,7 @@ export class JobService {
     return await this.jobModel
       .find()
       .populate({ path: 'location', model: Location.name })
+      .populate({ path: 'field' })
       .exec();
   }
 
@@ -23,6 +24,8 @@ export class JobService {
     return await this.jobModel
       .findById(id)
       .populate({ path: 'location', model: Location.name })
+      .populate({ path: 'field' })
+
       .exec();
   }
 

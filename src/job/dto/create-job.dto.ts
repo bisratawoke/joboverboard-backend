@@ -6,6 +6,8 @@ import {
   IsString,
 } from 'class-validator';
 import { SENIORITY, WORKPLACE } from '../schemas/job.schema';
+import { Transform } from 'class-transformer';
+import mongoose from 'mongoose';
 
 export class CreateJobDto {
   @IsString()
@@ -31,4 +33,8 @@ export class CreateJobDto {
   @IsArray()
   @IsNotEmpty()
   location: string[];
+
+  @IsNotEmpty()
+  @Transform(({ value }) => new mongoose.Types.ObjectId(value))
+  field: mongoose.Types.ObjectId;
 }

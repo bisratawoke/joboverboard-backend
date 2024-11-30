@@ -33,8 +33,8 @@ export class Job extends Document {
   @Prop({ type: Number, required: true })
   pay: number;
 
-  @Prop({ type: mongoose.Types.ObjectId, ref: Field.name })
-  field: mongoose.Types.ObjectId;
+  @Prop({ type: [{ type: mongoose.Types.ObjectId, ref: Field.name }] })
+  field: mongoose.Types.ObjectId[];
 }
 
 export const JobSchema = SchemaFactory.createForClass(Job);

@@ -35,6 +35,8 @@ export class CreateJobDto {
   location: string[];
 
   @IsNotEmpty()
-  @Transform(({ value }) => new mongoose.Types.ObjectId(value))
-  field: mongoose.Types.ObjectId;
+  @Transform(({ value }) =>
+    value.map((item) => new mongoose.Types.ObjectId(item)),
+  )
+  field: mongoose.Types.ObjectId[];
 }

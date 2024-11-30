@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { CreateJobDto } from './dto/create-job.dto';
 import { UpdateJobDto } from './dto/update-job.dto';
 import { Location } from 'src/location/schemas/location.schema';
+import { Field } from 'src/field/schemas/field.schema';
 @Injectable()
 export class JobService {
   constructor(@InjectModel(Job.name) private jobModel: Model<Job>) {}
@@ -16,7 +17,7 @@ export class JobService {
     return await this.jobModel
       .find()
       .populate({ path: 'location', model: Location.name })
-      .populate({ path: 'field' })
+      .populate({ path: 'field', model: Field.name })
       .exec();
   }
 
@@ -24,7 +25,7 @@ export class JobService {
     return await this.jobModel
       .findById(id)
       .populate({ path: 'location', model: Location.name })
-      .populate({ path: 'field' })
+      .populate({ path: 'field', model: Field.name })
 
       .exec();
   }

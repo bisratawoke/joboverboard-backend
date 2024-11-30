@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { JobModule } from './job/job.module';
 import { LocationModule } from './location/location.module';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -8,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ScraperModule } from './scraper/scraper.module';
 import { FieldModule } from './field/field.module';
+
 @Module({
   imports: [
     ScheduleModule.forRoot(),
@@ -27,7 +26,5 @@ import { FieldModule } from './field/field.module';
     ScraperModule,
     FieldModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

@@ -1,4 +1,4 @@
-# Job Listings API
+# Job Overboard API
 
 A **NestJS** application that provides REST APIs for managing and retrieving job listings. The API supports creating, reading, updating, and deleting (CRUD) job records.
 

@@ -19,12 +19,17 @@ export class Job extends Document {
   @Prop({ required: true, type: String })
   title: string;
   @Prop({
-    type: [
-      { type: mongoose.Types.ObjectId, required: true, ref: Location.name },
-    ],
+    type: [{ type: mongoose.Types.ObjectId, ref: Location.name }],
   })
-  location: string[];
+  location: mongoose.Types.ObjectId[];
+
+  @Prop({ required: true, enum: SENIORITY })
   seniority: SENIORITY;
+
+  @Prop({ required: true, enum: WORKPLACE })
+  workplace: WORKPLACE;
+
+  @Prop({ type: Number, required: true })
   pay: number;
 }
 

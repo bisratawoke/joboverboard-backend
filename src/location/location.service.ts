@@ -19,7 +19,7 @@ export class LocationService {
   }
 
   public async readOne(id: string) {
-    return await this.LocationModel.findById(id);
+    return await this.LocationModel.findById({ _id: id });
   }
 
   public async update(payload: UpdateLocationDto, id: string) {

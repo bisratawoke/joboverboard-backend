@@ -21,6 +21,11 @@ export class LocationController {
     return this.LocationService.readAll();
   }
 
+  @Get(':id')
+  async getById(@Param('id') id: string) {
+    return this.LocationService.readOne(id);
+  }
+
   @Post()
   async create(@Body() newLocation: CreateLocationDto) {
     return this.LocationService.create(newLocation);
